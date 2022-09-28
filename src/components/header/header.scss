@@ -1,0 +1,64 @@
+@import '../../styles/index.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 10px;
+  background-color: #5d96cf;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+
+  @include for-small-up {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  @include for-large-up {
+    padding: 20px 100px;
+    justify-content: space-between;
+  }
+
+  &__currencies {
+    display: flex;
+    flex-direction: column;
+    @include for-small-up {
+      flex-direction: row;
+    }
+  }
+
+  &__currency {
+    margin: 0;
+
+    @include for-small-up {
+      margin-left: 50px;
+    }
+    @include for-medium-up {
+      margin-left: 50px;
+    }
+    @include for-large-up {
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__rate {
+    font-weight: 400;
+    margin-left: 10px;
+
+    @include for-small-up {
+      margin-left: 20px;
+    }
+  }
+
+  &__lastUpdate {
+    display: none;
+    @include for-medium-up {
+      display: block;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+}

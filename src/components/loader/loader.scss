@@ -1,0 +1,26 @@
+.loader-container {
+  display: flex;
+  height: 200px;
+  width: 100%;
+}
+
+.loader {
+  margin: auto;
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(0, 189, 211, 1);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

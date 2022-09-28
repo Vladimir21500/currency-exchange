@@ -1,0 +1,95 @@
+@import '../../styles/index.scss';
+
+.converter {
+  padding: 30px 50px;
+  @include for-small-up {
+    padding: 45px 75px;
+  }
+  @include for-medium-up {
+    padding: 75px 50px;
+  }
+  @include for-large-up {
+    padding: 100px 50px;
+  }
+
+  &__title {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    color: #424242;
+
+    @include for-small-up {
+      font-size: 30px;
+    }
+  }
+
+  &__container {
+    @include for-medium-up {
+      display: flex;
+      justify-content: space-between;
+    }
+    @include for-large-up {
+      padding: 100px 50px;
+    }
+  }
+
+  &__firstCur,
+  &__secondCur {
+    @include for-medium-up {
+      width: 42vw;
+    }
+    @include for-large-up {
+      display: flex;
+      width: 40vw;
+    }
+  }
+
+  input {
+    height: 80px;
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 30px;
+    color: #5a5a5a;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #b3b3b3;
+    border-bottom: none;
+
+    @include for-small-up {
+      padding-left: 30px;
+      margin-top: 75px;
+      text-align: start;
+    }
+    @include for-large-up {
+      margin-top: 0;
+    }
+  }
+
+  select {
+    height: 80px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    color: #2f2f2f;
+    text-align: center;
+
+    overflow: hidden;
+    border: none;
+    outline: none;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #b3b3b3;
+
+    @include for-small-up {
+      padding-left: 30px;
+      font-size: 24px;
+      text-align: start;
+    }
+    @include for-large-up {
+      width: 105px;
+      padding-left: 15px;
+    }
+  }
+}
