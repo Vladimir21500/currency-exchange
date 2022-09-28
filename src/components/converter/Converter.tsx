@@ -19,12 +19,11 @@ const Converter: React.FC<{}> = () => {
   });
 
   useEffect(() => {
-    if (rates)
-      setSecondCount(
-        String(
-          (+firstCount * ratesObj[currencies.firstCur]) / ratesObj[currencies.secondCur],
-        ).replace(/^0+/, ''),
-      );
+    if (rates) {
+      const secondCount =
+        (+firstCount * ratesObj[currencies.firstCur]) / ratesObj[currencies.secondCur];
+      setSecondCount(secondCount.toFixed(2));
+    }
   }, [currencies]);
 
   const selectCurHandle = (name: string, value: string): void => {
