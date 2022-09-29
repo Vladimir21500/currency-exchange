@@ -4,6 +4,9 @@
 
 You can exchange currency with the current rate. This project gets rates from National Bank of Ukraine.
 
+This is adaptive site for all devices.
+Breakpoints: 640px, 900px, 1200px
+
 ### [Bank API](https://bank.gov.ua/ua/open-data/api-dev)
 
 ### The tech stack is:
