@@ -39,6 +39,7 @@
     }
     @include for-large-up {
       display: flex;
+      align-items: end;
       width: 38vw;
     }
   }
@@ -70,18 +71,30 @@
       font-size: 40px;
     }
     @include for-medium-up {
-      margin-top: 130px;
+      margin-top: 150px;
       font-size: 25px;
     }
     @include for-large-up {
-      margin-top: 15px;
+      margin-top: 35px;
+    }
+  }
+  &__rate {
+    display: block;
+    margin-top: 50px;
+    color: #5a5a5a;
+
+    @include for-small-up {
+      margin-top: 75px;
+    }
+    @include for-large-up {
+      display: inline;
+      margin-top: 0;
     }
   }
 
   input {
     height: 80px;
     width: 100%;
-    margin-top: 50px;
     padding: 10px;
     font-size: 30px;
     color: #5a5a5a;
@@ -97,7 +110,6 @@
 
     @include for-small-up {
       padding-left: 30px;
-      margin-top: 75px;
       text-align: start;
     }
     @include for-large-up {

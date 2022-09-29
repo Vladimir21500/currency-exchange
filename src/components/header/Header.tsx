@@ -20,7 +20,7 @@ const Header: React.FC<{}> = () => {
           </h2>
         </div>
       )}
-      <h2 className='header__lastUpdate'>Останнє оновлення від {lastUpdate}</h2>
+      <h2 className='header__lastUpdate'>{`Останнє оновлення від ${lastUpdate}`}</h2>
     </header>
   );
 };

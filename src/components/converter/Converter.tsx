@@ -33,7 +33,7 @@ const Converter: React.FC<{}> = () => {
     });
   };
 
-  const clickHandler = () => {
+  const replaceClickHandler = () => {
     setCurrencies({
       firstCur: currencies.secondCur,
       secondCur: currencies.firstCur,
@@ -65,42 +65,55 @@ const Converter: React.FC<{}> = () => {
   return (
     <div className='converter'>
       <h1 className='converter__title'>ОБМІН ВАЛЮТ</h1>
-      {isLoading && <Loader />}
-      <div className='converter__container'>
-        <div className='converter__firstCur'>
-          <input
-            onChange={changeFistCountHandler}
-            type='number'
-            value={firstCount}
-            max={9999999999}
-            min={0}
-          />
-          <Select
-            selectCurHandle={selectCurHandle}
-            rates={rates}
-            name='firstCur'
-            value={currencies.firstCur}
-          />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className='converter__container'>
+          <div className='converter__firstCur'>
+            <div className='converter__input-container'>
+              <span className='converter__rate'>
+                Курс до гривні: {ratesObj && ratesObj[currencies.firstCur]}
+              </span>
+              <input
+                onChange={changeFistCountHandler}
+                type='number'
+                value={firstCount}
+                max={9999999999}
+                min={0}
+              />
+            </div>
+            <Select
+              selectCurHandle={selectCurHandle}
+              rates={rates}
+              name='firstCur'
+              value={currencies.firstCur}
+            />
+          </div>
+          <button onClick={replaceClickHandler} className='converter__button'>
+            <FaExchangeAlt />
+          </button>
+          <div className='converter__secondCur'>
+            <div className='converter__input-container'>
+              <span className='converter__rate'>
+                Курс до гривні: {ratesObj && ratesObj[currencies.secondCur]}
+              </span>
+              <input
+                onChange={changeSecondCountHandler}
+                type='number'
+                value={secondCount}
+                max={9999999999}
+                min={0}
+              />
+            </div>
+            <Select
+              selectCurHandle={selectCurHandle}
+              rates={rates}
+              name='secondCur'
+              value={currencies.secondCur}
+            />
+          </div>
         </div>
-        <button onClick={clickHandler} className='converter__button'>
-          <FaExchangeAlt />
-        </button>
-        <div className='converter__secondCur'>
-          <input
-            onChange={changeSecondCountHandler}
-            type='number'
-            value={secondCount}
-            max={9999999999}
-            min={0}
-          />
-          <Select
-            selectCurHandle={selectCurHandle}
-            rates={rates}
-            name='secondCur'
-            value={currencies.secondCur}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 };

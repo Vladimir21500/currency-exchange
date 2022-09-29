@@ -1,16 +1,15 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { IRate } from "../../types/rates";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { IRate } from '../../types/rates';
 
-const baseUrl = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
+const baseUrl = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
-//!typezation
-export const fetchRates = createAsyncThunk("rates/fetchRates", async (thunkAPI) => {
+export const fetchRates = createAsyncThunk('rates/fetchRates', async (thunkAPI) => {
   try {
     const response = await fetch(baseUrl).then((response) => response.json());
     return response;
   } catch (err) {
-    alert("failed request");
+    alert('failed request');
     return null;
   }
 });
@@ -19,19 +18,18 @@ export const fetchRates = createAsyncThunk("rates/fetchRates", async (thunkAPI) 
 
 interface IInitialState {
   rates: IRate[] | null;
-  lastUpdate: any;
+  lastUpdate: Date | null;
   isLoading: boolean;
-  //! any
 }
 
 const initialState: IInitialState = {
   rates: null,
-  lastUpdate: 5,
+  lastUpdate: null,
   isLoading: false,
 };
 
 export const ratesSlice = createSlice({
-  name: "rates",
+  name: 'rates',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -50,8 +48,8 @@ export const ratesSlice = createSlice({
         }));
         state.rates?.push({
           rate: 1,
-          descr: "Українська гривня",
-          currency: "UAH",
+          descr: 'Українська гривня',
+          currency: 'UAH',
         });
       })
       .addCase(fetchRates.rejected, (state, action) => {
