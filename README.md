@@ -2,9 +2,9 @@
 
 ## [Site link](https://vladimir21500.github.io/currency-exchange/)
 
-You can exchange currency with the current rate. This project get rates from National Bank of Ukraine.
+You can exchange currency with the current rate. This project gets rates from National Bank of Ukraine.
 
-### [API](https://bank.gov.ua/ua/open-data/api-dev)
+### [Bank API](https://bank.gov.ua/ua/open-data/api-dev)
 
 ### The tech stack is:
 
