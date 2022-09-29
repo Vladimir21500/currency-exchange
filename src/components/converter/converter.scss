@@ -55,7 +55,7 @@
     border: none;
     border-radius: 25px;
     background-color: inherit;
-    color: #2f2f2f;
+    color: $font-color-dark-grey;
     font-size: 45px;
     cursor: pointer;
     transition: all 0.5s;
@@ -109,10 +109,11 @@
     border: none;
     outline: none;
     border-radius: 5px 5px 0 0;
-    border: 1px solid #b3b3b3;
+    border: 1px solid $font-color-grey;
     border-bottom: none;
+    transition: all 0.2s;
     &:focus {
-      border-bottom: 2px solid #5a5a5a;
+      border-bottom: 3px solid #5d96cf;
     }
 
     @include for-small-up {
@@ -121,6 +122,8 @@
     }
     @include for-large-up {
       margin-top: 0;
+      border-radius: 5px 0 0 5px;
+      border: 1px solid $font-color-grey;
     }
   }
 
@@ -129,14 +132,20 @@
     width: 100%;
     padding: 10px;
     font-size: 20px;
-    color: #2f2f2f;
+    color: $font-color-dark-grey;
     text-align: center;
 
     overflow: hidden;
     border: none;
     outline: none;
     border-radius: 0 0 5px 5px;
-    border: 1px solid #b3b3b3;
+    border: 1px solid $font-color-grey;
+    cursor: pointer;
+
+    & span {
+      color: red;
+      width: 30px;
+    }
 
     @include for-small-up {
       padding-left: 30px;
@@ -146,6 +155,7 @@
     @include for-large-up {
       width: 101px;
       padding-left: 15px;
+      border-radius: 0 5px 5px 0;
     }
   }
 }

@@ -1,20 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { IRate } from '../../types/rates';
 
 const baseUrl = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
-export const fetchRates = createAsyncThunk('rates/fetchRates', async (thunkAPI) => {
+export const fetchRates = createAsyncThunk('rates/fetchRates', async () => {
   try {
     const response = await fetch(baseUrl).then((response) => response.json());
     return response;
   } catch (err) {
-    alert('failed request');
+    alert('error, try to come back later');
     return null;
   }
 });
-
-//!handle error
 
 interface IInitialState {
   rates: IRate[] | null;
@@ -34,31 +31,32 @@ export const ratesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchRates.pending, (state, action) => {
+      .addCase(fetchRates.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(fetchRates.fulfilled, (state, action) => {
         const rates = action.payload;
         state.isLoading = false;
-        state.lastUpdate = action.payload[0].exchangedate;
-        state.rates = rates.map((rate: any) => ({
-          rate: rate.rate,
-          descr: rate.txt,
-          currency: rate.cc,
-        }));
-        state.rates?.push({
-          rate: 1,
-          descr: 'Українська гривня',
-          currency: 'UAH',
-        });
+        if (action.payload) {
+          state.lastUpdate = action.payload[0].exchangedate;
+          state.rates = rates.map((rate: any) => ({
+            rate: rate.rate,
+            descr: rate.txt,
+            currency: rate.cc,
+          }));
+          state.rates?.push({
+            rate: 1,
+            descr: 'Українська гривня',
+            currency: 'UAH',
+          });
+        }
       })
       .addCase(fetchRates.rejected, (state, action) => {
+        alert(action.payload);
         state.isLoading = false;
-        state.rates = null;
+        state.rates = [];
       });
   },
 });
-
-export const {} = ratesSlice.actions;
 
 export default ratesSlice.reducer;
