@@ -40,6 +40,7 @@
     @include for-large-up {
       display: flex;
       align-items: end;
+      justify-content: center;
       width: 38vw;
     }
   }
