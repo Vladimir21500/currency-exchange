@@ -2,7 +2,7 @@ import React from 'react';
 import { IRate } from '../../../types/rates';
 
 interface ISelect {
-  rates: IRate[] | null;
+  rates: IRate[] | undefined;
   name: string;
   value: string;
   selectCurHandle: (name: string, value: string) => void;

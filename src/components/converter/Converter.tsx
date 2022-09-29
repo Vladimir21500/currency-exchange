@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
-import { selectRates } from '../../store/selectors/rates';
+import { selectRates, selectSortedCurencies } from '../../store/selectors/rates';
 import Loader from '../loader/Loader';
 import { FaExchangeAlt } from 'react-icons/fa';
 
@@ -9,7 +9,8 @@ import Select from './select/Select';
 
 const Converter: React.FC<{}> = () => {
   const ratesObj = useAppSelector(selectRates);
-  const { rates, isLoading } = useAppSelector((state) => state.rates);
+  const isLoading = useAppSelector((state) => state.rates.isLoading);
+  const sortedRates = useAppSelector(selectSortedCurencies);
 
   const [firstCount, setFirstCount] = useState<string>('');
   const [secondCount, setSecondCount] = useState<string>('');
@@ -19,7 +20,7 @@ const Converter: React.FC<{}> = () => {
   });
 
   useEffect(() => {
-    if (rates) {
+    if (sortedRates) {
       const secondCount =
         (+firstCount * ratesObj[currencies.firstCur]) / ratesObj[currencies.secondCur];
       setSecondCount(secondCount.toFixed(2));
@@ -84,7 +85,7 @@ const Converter: React.FC<{}> = () => {
             </div>
             <Select
               selectCurHandle={selectCurHandle}
-              rates={rates}
+              rates={sortedRates}
               name='firstCur'
               value={currencies.firstCur}
             />
@@ -107,7 +108,7 @@ const Converter: React.FC<{}> = () => {
             </div>
             <Select
               selectCurHandle={selectCurHandle}
-              rates={rates}
+              rates={sortedRates}
               name='secondCur'
               value={currencies.secondCur}
             />
