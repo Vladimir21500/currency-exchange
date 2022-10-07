@@ -7,6 +7,8 @@ You can exchange currency with the current rate. This project gets rates from Na
 This is adaptive site for all devices.
 Breakpoints: 640px, 900px, 1200px
 
+P.S. I used Redux Toolkit in this project only for learning. Usually I not use Redux for small projects.
+
 ### [Bank API](https://bank.gov.ua/ua/open-data/api-dev)
 
 ### The tech stack is:
